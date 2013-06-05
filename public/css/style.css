@@ -1,0 +1,34 @@
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+#toggle-create-crawler-options:hover {
+	text-decoration: none;
+}
+
+#toggle-create-crawler-options {
+    background: url(/collapse-sprite.png) no-repeat left -15px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+#toggle-create-crawler-options.collapsed{ background: url(/collapse-sprite.png) no-repeat left 2px; }
+#toggle-create-crawler-options.expanded{ background: url(/collapse-sprite.png) no-repeat left -15px; }
+
+#create-crawler-options {
+	margin-top: 10px;
+	border: 1px solid #DDD;
+	padding: 10px;
+}
+
+.title {
+	text-align: center;
+}
+
+#results {
+	table-layout: fixed;
+	word-wrap: break-word;
+	margin: 2% 5%;
+	width: 90%;
+
+}

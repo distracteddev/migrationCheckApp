@@ -1,0 +1,66 @@
+<div class="container">
+	<p>
+		<form class="form-inline" method="POST" action="/run">
+			<fieldset>
+				<legend>Compare Server Component Results</legend>
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" class="input-large" name="scUrl1" placeholder="First Server Component URL">
+					</div>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" class="input-large" name="scUrl2" placeholder="Second Server Component URL">
+					</div>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" class="input-large" name="clientId" placeholder="Client ID">
+					</div>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" class="input-large" name="baseUrl" placeholder="URL of Site to Scrape">
+					</div>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" class="input-large" name="limit" placeholder="Number of URLS to compare">
+					</div>
+				</div>
+
+			</fieldset>
+
+			<div style="padding-top: 10px;">
+				<button type="submit" class="btn">Start Comparison</button>
+			</div>
+		</form>
+	</p>
+
+	<p>
+		<fieldset>
+			<legend>Completed Comparisons</legend>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Scraped URL</th>
+						<th>Results</th>
+					</tr>
+				</thead>
+				<tbody id="completed-comparisons">
+					<% previousResults.forEach(function(result) { %>
+					<tr id="<%= result.id %>">
+						<td><%= result.url %></td>
+						<td><a href="<%= result.href %>"> <%= result.href %> </a></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</fieldset>
+	</p>
+
+</div> <!-- /container -->
