@@ -8,7 +8,7 @@ var express   = require('express')
   , partials  = require('express-partials')
   , app		  = express();
 
-global.io = require('socket.io').listen(app.listen( 3000 ));
+global.io = require('socket.io').listen(app.listen( process.env.PORT || 3000 ));
 
 io.configure(function () {
 	io.set('transports', ['websocket', 'xhr-polling']);
