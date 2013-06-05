@@ -2,13 +2,13 @@
  * Routes handlers
  */
 
-var exec = require('child_process').exec,
+var exec        = require('child_process').exec,
 	child_process = require('child_process'),
-	db = require('dirty'),
-	urlUtil = require('url');
-	fs 			  = require('fs'),
-
-	child_processes = [];
+	db            = require('dirty'),
+	urlUtil       = require('url'),
+	fs 			      = require('fs'),
+	Crawl					= require('migrationCheck/newCrawler'),
+	Comparison    = require('migrationCheck/compare');
 
 
 db = db('results');
@@ -63,9 +63,8 @@ function runComparison(req, res) {
 		scUrl2	   = req.body.scUrl2,
 		clientId   = parseInt(req.body.clientId),
 		baseUrl    = req.body.baseUrl,
-		limit 	   = parseInt(req.body.limit),
-	  Crawl					= require('migrationCheck').Crawl,
-		Comparison = require('migrationCheck').Comparison;
+		limit 	   = parseInt(req.body.limit);
+
 
 
 	Crawl(baseUrl, limit, function (urls) {
