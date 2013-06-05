@@ -31,17 +31,8 @@ function getResult(req, res) {
 }
 
 function getHomePage(req, res) {
-	function testEmit() {
-		console.log("Testing Emit");
-		io.sockets.emit('result', {
-			url: 'http://test.url.com/',
-			id: 'test.url.com_1231313213',
-			href: '/results/test.url'
-		});
-	}
 
 	var previousResults = []
-	// setTimeout(testEmit, 2000);
 	db.forEach(function(key, val) {
 		previousResults.push({
 			id: key,
@@ -58,17 +49,20 @@ function getHomePage(req, res) {
 }
 
 function runComparison(req, res) {
-	var url   	 = req.body.url,
-		scUrl1	   = req.body.scUrl1,
-		scUrl2	   = req.body.scUrl2,
-		clientId   = parseInt(req.body.clientId),
-		baseUrl    = req.body.baseUrl,
-		limit 	   = parseInt(req.body.limit);
+	var scUrl1	   = req.body.scUrl1,
+		  scUrl2	   = req.body.scUrl2,
+		  clientId   = parseInt(req.body.clientId),
+		  baseUrl    = req.body.baseUrl,
+		  limit 	   = parseInt(req.body.limit);
 
 
+	console.log('Starting to Crawl', baseUrl);
 
 	Crawl(baseUrl, limit, function (urls) {
 		var comp = new Comparison(scUrl1, scUrl2, clientId, urls);
+
+		console.log('Starting Comparison', baseUrl);
+		comp.silent = true;
 
 		var id = urlUtil.parse(baseUrl).hostname + '_' + Date.now();
 
