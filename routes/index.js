@@ -51,10 +51,15 @@ function getHomePage(req, res) {
 function runComparison(req, res) {
 	var scUrl1	   = req.body.scUrl1,
 		  scUrl2	   = req.body.scUrl2,
+		  clientName = req.body.clientName,
 		  clientId   = parseInt(req.body.clientId),
 		  baseUrl    = req.body.baseUrl,
 		  limit 	   = parseInt(req.body.limit);
 
+	if (clientName) {
+		scUrl1 = 'https://nexus.ensighten.com/' + clientName +'/serverComponent.php';
+		scUrl2 = 'https://nexus3.ensighten.com/' + clientName +'/serverComponent.php';
+	}
 
 	console.log('Starting to Crawl', baseUrl);
 
