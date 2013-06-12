@@ -1,6 +1,6 @@
 String.prototype.format = function() {
   var args = arguments;
-  return this.replace(/{(\d+)}/g, function(match, number) { 
+  return this.replace(/{(\d+)}/g, function(match, number) {
     return typeof args[number] != 'undefined'
       ? args[number]
       : match
@@ -11,6 +11,12 @@ String.prototype.format = function() {
 $(document).ready(function() {
 
   prettyPrint();
+
+  ZeroClipboard.setDefaults({
+    moviePath: "/ZeroClipboard.swf",
+    activeClass: "active"
+  });
+  var clip = new ZeroClipboard($(".copy-button"));
 
 	var rowTemplate = $("#rowTemplate").html();
 
@@ -25,7 +31,7 @@ $(document).ready(function() {
   $(".toggleCode .btn").click(function() {
     $(".response").toggleClass('hide');
     $(".code").toggleClass('hide');
-    $(".btn").toggleClass("active");
+    $(".toggleCode .btn").toggleClass("active");
     return false;
   });
 
