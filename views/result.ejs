@@ -36,10 +36,30 @@
 		%>
 		<tr id="<%= result.id %>">
 			<td><%=key.replace(data.baseUrl, '')%></td>
-			<td class="response"><pre class="prettyprint language-js"><%=val[data.scUrl1].response%></pre></td>
-			<td class="response"><pre class="prettyprint language-js"><%=val[data.scUrl2].response%></pre></td>
-			<td class="code hide"><pre class="prettyprint linenums language-js"><%=val[data.scUrl1].code%></pre></td>
-			<td class="code hide"><pre class="prettyprint linenums language-js"><%=val[data.scUrl2].code%></pre></td>
+			<td class="response">
+				<button class="copy-button btn btn-mini pull-right" data-clipboard-text="<%=val[data.scUrl1].response%>">
+					<i class="icon-file"></i>
+				</button>
+				<pre class="prettyprint language-js"><%=val[data.scUrl1].response%></pre>
+			</td>
+			<td class="response">
+				<button class="copy-button btn btn-mini pull-right" data-clipboard-text="<%=val[data.scUrl2].response%>">
+					<i class="icon-file"></i>
+				</button>
+				<pre class="prettyprint language-js"><%=val[data.scUrl2].response%></pre>
+			</td>
+			<td class="code hide">
+				<button class="copy-button btn btn-mini pull-right" data-clipboard-text="<%=val[data.scUrl1].code%>">
+					<i class="icon-file"></i>
+				</button>
+				<pre class="prettyprint linenums language-js"><%=val[data.scUrl1].code%></pre>
+			</td>
+			<td class="code hide">
+				<button class="copy-button btn btn-mini pull-right" data-clipboard-text="<%=val[data.scUrl2].code%>">
+					<i class="icon-file"></i>
+				</button>
+				<pre class="prettyprint linenums language-js"><%=val[data.scUrl2].code%></pre>
+			</td>
 		</tr>
 		<% }); %>
 	</tbody>
