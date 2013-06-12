@@ -7,14 +7,27 @@
 		<h2 class="title">Results for <%=data.baseUrl%></h2>
 		<h4 class="title">(<%=Object.keys(result).length%> URLs found and tested)</h4>
 	</div>
+	<div class="row">
+		<div class="span3 pull-right">
+			<h4 class="pull-left" style="position: relative; left: 20%; top: 5px;">View:</h4>
+			<div class="btn-group toggleCode pull-right">
+			  <button class="btn active">Response</button>
+			  <button class="btn">Code</button>
+			</div>
+		</div>
+	</div>
 </div>
+
+
 
 <table id="results" class="table table-bordered table-striped">
 	<thead>
 		<tr>
-			<th>URL Provided to Server Component</th>
-			<th>Response From <%=data.scUrl1%></th>
-			<th>Response From <%=data.scUrl2%></th>
+			<th style="width: 10%;">URL Provided to Server Component</th>
+			<th class="response">Response From <%=data.scUrl1%></th>
+			<th class="response">Response From <%=data.scUrl2%></th>
+			<th class="code hide">Code Delivered By <%=data.scUrl1%></th>
+			<th class="code hide">Code Delivered By <%=data.scUrl2%></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,8 +36,10 @@
 		%>
 		<tr id="<%= result.id %>">
 			<td><%=key.replace(data.baseUrl, '')%></td>
-			<td><%=val[data.scUrl1]%></td>
-			<td><%=val[data.scUrl2]%></td>
+			<td class="response"><pre class="prettyprint language-js"><%=val[data.scUrl1].response%></pre></td>
+			<td class="response"><pre class="prettyprint language-js"><%=val[data.scUrl2].response%></pre></td>
+			<td class="code hide"><pre class="prettyprint linenums language-js"><%=val[data.scUrl1].code%></pre></td>
+			<td class="code hide"><pre class="prettyprint linenums language-js"><%=val[data.scUrl2].code%></pre></td>
 		</tr>
 		<% }); %>
 	</tbody>

@@ -9,13 +9,25 @@ String.prototype.format = function() {
 };
 
 $(document).ready(function() {
+
+  prettyPrint();
+
 	var rowTemplate = $("#rowTemplate").html();
 
+  // handle socket.io messages
 	socket.on('result', function (data) {
 		console.log("Recieved Result", data);
 		var html = rowTemplate.format(data.id, data.url, data.href)
 		$("#completed-comparisons").append(html)
 	})
+
+  // hide or show code columns
+  $(".toggleCode .btn").click(function() {
+    $(".response").toggleClass('hide');
+    $(".code").toggleClass('hide');
+    $(".btn").toggleClass("active");
+    return false;
+  });
 
 })
 
