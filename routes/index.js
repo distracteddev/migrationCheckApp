@@ -24,9 +24,11 @@ module.exports = function(app) {
 }
 
 function getResult(req, res) {
+	var data = db.get(req.params.id);
 	res.render('result', {
 		id: req.params.id,
-		data: db.get(req.params.id)
+		// data: db.get(req.params.id)
+		data: data
 	});
 }
 
@@ -68,8 +70,10 @@ function runComparison(req, res) {
 
 		console.log('Starting Comparison', baseUrl);
 		comp.silent = true;
+		comp.writeToFile = true;
 
 		var id = urlUtil.parse(baseUrl).hostname + '_' + Date.now();
+		comp.fileName = 'csv/' + id + '.txt';
 
 		// once we're done...
 		comp.on('complete', function(results) {
@@ -83,6 +87,8 @@ function runComparison(req, res) {
 			}, function() {
 				console.log('Saved result', id);
 			});
+
+			// write csv
 
 			// Emit the result
 			io.sockets.emit('result', {

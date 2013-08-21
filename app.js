@@ -29,8 +29,11 @@ app.configure(function() {
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
+	app.use(express.compress());
 	app.use(partials());
 	app.use(app.router);
+	app.use('/csv', express.directory('csv'));
+	app.use('/csv', express.static('csv'));
 	app.use(express.static(path.join(__dirname, 'public')));
 });
 

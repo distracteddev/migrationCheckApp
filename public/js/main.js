@@ -10,13 +10,13 @@ String.prototype.format = function() {
 
 $(document).ready(function() {
 
-  prettyPrint();
+  // ZeroClipboard.setDefaults({
+  //   moviePath: "/ZeroClipboard.swf",
+  //   activeClass: "active"
+  // });
+  // var clip = new ZeroClipboard($(".copy-button"));
 
-  ZeroClipboard.setDefaults({
-    moviePath: "/ZeroClipboard.swf",
-    activeClass: "active"
-  });
-  var clip = new ZeroClipboard($(".copy-button"));
+  // prettyPrint();
 
 	var rowTemplate = $("#rowTemplate").html();
 
